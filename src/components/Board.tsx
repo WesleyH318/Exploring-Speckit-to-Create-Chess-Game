@@ -70,6 +70,7 @@ export default function Board({
                   isValidMove={isValidMove}
                   isCheck={isCheckSquare}
                   onClick={() => onSquareClick(square)}
+                  testId={`square-${rank}-${file}`}
                 />
               )
             })}

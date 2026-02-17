@@ -8,6 +8,7 @@ interface Props {
   isValidMove: boolean
   isCheck: boolean
   onClick: () => void
+  testId?: string
 }
 
 export default function Square({
@@ -17,6 +18,7 @@ export default function Square({
   isValidMove,
   isCheck,
   onClick,
+  testId,
 }: Props) {
   let bg = isLight ? '#f0d9b5' : '#b58863'
   if (isSelected) bg = '#829769'
@@ -24,6 +26,7 @@ export default function Square({
 
   return (
     <div
+      data-testid={testId}
       onClick={onClick}
       style={{
         width: '100%',
