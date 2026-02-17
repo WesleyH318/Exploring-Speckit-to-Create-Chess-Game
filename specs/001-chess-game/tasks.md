@@ -77,8 +77,8 @@
 
 ### Integration Tests for User Story 1
 
-- [ ] T029 [P] [US1] Write integration test for full gameplay flow in tests/integration/gameplay.test.tsx: render App, click New Game, play Scholar's Mate (1.e4 e5 2.Bc4 Nc6 3.Qh5 Nf6 4.Qxf7#), verify checkmate displayed
-- [ ] T030 [P] [US1] Write integration test for special moves UI in tests/integration/specialMoves.test.tsx: test castling via clicks, en passant via clicks, pawn promotion dialog appears and selection works
+- [x] T029 [P] [US1] Write integration test for full gameplay flow in tests/integration/gameplay.test.tsx: render App, click New Game, play Scholar's Mate (1.e4 e5 2.Bc4 Nc6 3.Qh5 Nf6 4.Qxf7#), verify checkmate displayed
+- [x] T030 [P] [US1] Write integration test for special moves UI in tests/integration/specialMoves.test.tsx: test castling via clicks, en passant via clicks, pawn promotion dialog appears and selection works
 
 **Checkpoint**: At this point, User Story 1 is fully functional and testable independently. Players can play a complete chess game with all standard rules.
 
@@ -126,7 +126,7 @@
 - [x] T043 [US3] Implement offerDraw and acceptDraw in src/engine/game.ts: add pendingDrawOffer flag to Game, offerDraw sets flag, acceptDraw sets status to DrawByAgreement per engine-api.md contract
 - [x] T044 [US3] Add draw UI to GameControls in src/components/GameControls.tsx: Offer Draw button, draw claim notification when repetition/fifty-move detected, accept/decline draw offer prompt
 - [x] T045 [US3] Update useChessGame hook with draw actions in src/hooks/useChessGame.ts: add OFFER_DRAW, ACCEPT_DRAW, DECLINE_DRAW, CLAIM_DRAW actions, delegate to engine functions
-- [ ] T046 [US3] Write integration test for draw detection in tests/integration/drawDetection.test.tsx: play moves triggering threefold repetition, claim draw, verify game ends; test draw offer/accept via UI clicks
+- [x] T046 [US3] Write integration test for draw detection in tests/integration/drawDetection.test.tsx: play moves triggering threefold repetition, claim draw, verify game ends; test draw offer/accept via UI clicks
 
 **Checkpoint**: All user stories are independently functional. Full chess rule set is implemented.
 
@@ -138,7 +138,7 @@
 
 - [x] T047 [P] Refine App.css for responsive layout and mobile-friendly board sizing in src/App.css
 - [x] T048 [P] Run full test suite and fix any failures across tests/unit/ and tests/integration/
-- [ ] T049 Validate quickstart.md scenarios against working application per specs/001-chess-game/quickstart.md
+- [x] T049 Validate quickstart.md scenarios against working application per specs/001-chess-game/quickstart.md
 - [x] T050 Verify production build succeeds with `npm run build` and preview with `npm run preview`
 
 ---
