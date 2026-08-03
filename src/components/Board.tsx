@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import type { BoardPosition, Square as SquareType } from '../engine/types'
 import { getPieceAt } from '../engine/board'
 import SquareComponent from './Square'
@@ -32,9 +33,8 @@ export default function Board({
         }}
       >
         {ranks.map((rank) => (
-          <>
+          <Fragment key={`rank-${rank}`}>
             <div
-              key={`label-${rank}`}
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -74,7 +74,7 @@ export default function Board({
                 />
               )
             })}
-          </>
+          </Fragment>
         ))}
         {/* File labels */}
         <div />
