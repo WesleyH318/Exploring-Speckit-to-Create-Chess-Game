@@ -11,6 +11,32 @@ A complete, playable chess game built with React, TypeScript, and Vite — creat
 - Algebraic notation move history
 - Click-to-select with valid-move highlighting
 
+## Chess bot (GitHub API integration)
+
+The repository also hosts a bot that lets a game be played in the comments of a
+GitHub issue. It is a genuine GitHub API integration: a workflow reacts to
+`issue_comment` events, validates the move with the same engine that powers the
+web app, then rewrites the issue body and replies via the REST API.
+
+Comment on any issue with:
+
+| Command | Effect |
+| --- | --- |
+| `/chess e2e4` | Play a move in coordinate notation |
+| `/chess e7e8q` | Promote a pawn (`q`, `r`, `b`, or `n`) |
+| `/chess new` | Start a fresh game in that issue |
+| `/chess draw` / `/chess accept` | Offer and accept a draw |
+| `/chess resign` | Resign |
+
+The issue body is the only storage. A single HTML comment holds the move list,
+and the position is rebuilt by replaying every move through the engine — the
+stored position is never trusted, so a hand-edited marker fails loudly instead
+of producing an illegal board.
+
+Source lives in `scripts/chess-bot/`, with the decision layer (`commands.ts`,
+`state.ts`, `apply.ts`) kept free of network access so it is unit-testable;
+`github.ts` and `index.ts` hold the I/O.
+
 ## Requirements
 
 - Node.js 20.19+ (or 22.12+), as required by Vite 7
@@ -53,6 +79,8 @@ src/
   components/  Presentational React components
   hooks/
     useChessGame.ts  Game state wired to the UI
+scripts/
+  chess-bot/     GitHub issue-comment bot built on the same engine
 tests/
   unit/         Engine tests
   integration/  Full gameplay flows driven through the UI

@@ -1,0 +1,35 @@
+name: Chess bot
+
+on:
+  issue_comment:
+    types: [created]
+
+# Only the issue being played in is ever written to.
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  play:
+    # Cheap pre-filter so ordinary comments never start a runner.
+    if: startsWith(github.event.comment.body, '/chess')
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Handle command
+        run: npx tsx scripts/chess-bot/index.ts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
