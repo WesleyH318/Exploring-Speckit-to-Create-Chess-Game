@@ -96,5 +96,5 @@ npm test
 ```
 
 The suite covers move generation, special moves, and draw detection, plus
-integration tests that play real games through the UI — including Scholar's
+integration tests that play real games through the UI - including Scholar's
 Mate (`1.e4 e5 2.Bc4 Nc6 3.Qh5 Nf6 4.Qxf7#`).
